@@ -66,10 +66,18 @@ async def three(message:types.Message,state:FSMContext):
            'tel': tel
        })
        data = await state.get_data()
+       tel = data['tel']
        result = fantest(test_kodi=data['test_kodi'], tel=data['tel'])
-       get_result_image(test_kodi=data['test_kodi'], tel=data['tel'])
-       image = f"https://yadrosmart.uz/charts/images/images/{data['tel']}.png"
-       await message.answer_photo(photo=image, caption=result)
+    #    natija =get_result_image(test_kodi=data['test_kodi'], tel=tel[1:])
+    #    if not natija['errorser']:
+    #         if not natija['error']:
+    #           await message.answer_photo(photo=natija['url'],caption=result) 
+    #           await message.answer_document(document=natija['urlser'])
+    #    elif not natija['error']:
+    #         await message.answer_photo(photo=natija['url'],caption=result)
+    #    else:
+    #         await message.answer("<b>Ma'lumot topilmadi!</b>")
+       await message.answer(result)
        await state.finish()
     else:
         tel = message.text
@@ -78,10 +86,18 @@ async def three(message:types.Message,state:FSMContext):
                 'tel': tel
             })
             data = await state.get_data()
+            tel = data['tel']
             result = fantest(test_kodi=data['test_kodi'], tel=data['tel'])
-            get_result_image(test_kodi=data['test_kodi'], tel=data['tel'])
-            image = f"https://yadrosmart.uz/charts/images/images/{data['tel']}.png"
-            await message.answer_photo(photo=image,caption=result)
+            # natija = get_result_image(test_kodi=data['test_kodi'], tel=tel[1:])
+            # if not natija['errorser']:
+            #     if not natija['error']:
+            #         await message.answer_photo(photo=natija['url'], caption=result)
+            #         await message.answer_document(document=natija['urlser'])
+            # elif not natija['error']:
+            #     await message.answer_photo(photo=natija['url'], caption=result)
+            # else:
+            #     await message.answer("<b>Ma'lumot topilmadi!</b>")
+            await message.answer(result)
             await state.finish()
         else:
             await message.answer(f"Telefon raqamingizni ulashing:\n"
