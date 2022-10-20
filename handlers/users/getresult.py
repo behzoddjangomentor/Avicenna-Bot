@@ -48,7 +48,7 @@ async def two(message:types.Message,state:FSMContext):
                 'test_kodi': test_kodi
             })
             await message.answer(f"Telefon raqamingizni ulashing:\n"
-                                 f"1.<b>+998996671529</b> ko'rinishida yoki\n"
+                                 f"1.<b>998996671529</b> ko'rinishida yoki\n"
                                  f"2.<b>Telefon raqamni ulashish</b> tugmasini bosing!", reply_markup=number)
             await CheckResult.next()
         else:
@@ -63,20 +63,11 @@ async def three(message:types.Message,state:FSMContext):
     if message.content_type =='contact':
        tel = message.contact.phone_number
        await state.update_data({
-           'tel': tel
+           'tel': tel[1:]
        })
        data = await state.get_data()
        tel = data['tel']
        result = fantest(test_kodi=data['test_kodi'], tel=data['tel'])
-    #    natija =get_result_image(test_kodi=data['test_kodi'], tel=tel[1:])
-    #    if not natija['errorser']:
-    #         if not natija['error']:
-    #           await message.answer_photo(photo=natija['url'],caption=result) 
-    #           await message.answer_document(document=natija['urlser'])
-    #    elif not natija['error']:
-    #         await message.answer_photo(photo=natija['url'],caption=result)
-    #    else:
-    #         await message.answer("<b>Ma'lumot topilmadi!</b>")
        await message.answer(result)
        await state.finish()
     else:
@@ -88,20 +79,11 @@ async def three(message:types.Message,state:FSMContext):
             data = await state.get_data()
             tel = data['tel']
             result = fantest(test_kodi=data['test_kodi'], tel=data['tel'])
-            # natija = get_result_image(test_kodi=data['test_kodi'], tel=tel[1:])
-            # if not natija['errorser']:
-            #     if not natija['error']:
-            #         await message.answer_photo(photo=natija['url'], caption=result)
-            #         await message.answer_document(document=natija['urlser'])
-            # elif not natija['error']:
-            #     await message.answer_photo(photo=natija['url'], caption=result)
-            # else:
-            #     await message.answer("<b>Ma'lumot topilmadi!</b>")
             await message.answer(result)
             await state.finish()
         else:
             await message.answer(f"Telefon raqamingizni ulashing:\n"
-                                 f"1.<b>+998996671529</b> ko'rinishida yoki\n"
+                                 f"1.<b>998996671529</b> ko'rinishida yoki\n"
                                  f"2.<b>Telefon raqamni ulashish</b> tugmasini bosing!")
             await CheckResult.phone.set()
 
