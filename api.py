@@ -178,9 +178,9 @@ def getstudentinfo(one_id):
         return data
 # def get_result_image(test_kodi,tel):
 #     url = f"https://yadrosmart.uz/charts/images/temp.php?test_code={test_kodi}&pn={tel}"
-#     # response = requests.get(url)
-#     # rest = json.loads(response.text)
-#     return url
+#     response = requests.get(url)
+#     rest = json.loads(response.text)
+#     return rest
     
-# print(get_result_image(123456,998902532323))
+# print(get_result_image(123456,'998902532323'))
 

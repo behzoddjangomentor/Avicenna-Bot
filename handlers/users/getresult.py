@@ -3,7 +3,7 @@ from aiogram import types
 from loader import dp,bot
 from aiogram.dispatcher import FSMContext
 from states.ResultState import CheckResult,BlokTestState
-from api import fantest,checktestcode,bloktest,get_block_test, about,get_result_image
+from api import fantest,checktestcode,bloktest,get_block_test, about
 from keyboards.default.buttons import number,main,testlar,backbutton
 from aiogram.dispatcher.filters import  Text
 @dp.message_handler(Text(startswith="📑 Blok testlar"),state=None)
